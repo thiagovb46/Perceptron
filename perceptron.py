@@ -14,7 +14,7 @@ classes_conjunto = np.where(classes_conjunto == 1, 1, -1)
 taxa_aprendizado = 0.1;
 epoch = 100
 
-for cont in range(6):
+for cont in range(9):
     if cont == 0:
         proporcao_conn_teste = 0.1
     else:
@@ -35,6 +35,18 @@ for cont in range(6):
                 proporcao_conn_teste = 0.5
                 taxa_aprendizado = 0.5
                 epoch = 100
+            if cont == 6:
+                proporcao_conn_teste = 0.5
+                taxa_aprendizado = 0.2
+                epoch = 200
+            if cont == 7:
+                proporcao_conn_teste = 0.5
+                taxa_aprendizado = 0.2
+                epoch = 500
+            if cont == 8:
+                proporcao_conn_teste = 0.5
+                taxa_aprendizado = 0.2
+                epoch = 10000
     # Divisão entre treinamento e teste
     atributos_treinamento, atributos_teste, classes_treinamento, classes_teste = train_test_split(atributos_do_conjunto, classes_conjunto, test_size=proporcao_conn_teste, random_state=42)
     tamanho_conjunto = atributos_teste.shape[0]
